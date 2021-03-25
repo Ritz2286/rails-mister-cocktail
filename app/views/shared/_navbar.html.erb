@@ -1,0 +1,14 @@
+<div class="banner border-bottom p-2" style="background-color: #f9f9f9; height: 70px;">
+  <div class="containerr">
+    <div class="d-flex justify-content-between">
+      <%= link_to cocktails_path do %>
+        <i class="fas fa-cocktail fa-3x ml-4" style="color:#ffa987"></i>
+      <% end %>
+      <form class="form-inline mr-3 d-flex">
+      <input class="form-control" name="query" value="<%= params[:query] %>" type="search" placeholder="Search" aria-label="Search">
+      <!-- <button class="btn btn-success ml-1" type="submit">Search</button> -->
+        <%= link_to 'Add Cocktail', new_cocktail_path, class: " ml-2 p-2 text-decoration-none", style: "background-color: #ffa987; color: #fff; border-radius: 10px;" %>
+      </form>
+    </div>
+  </div>
+</div>

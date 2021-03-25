@@ -1,0 +1,74 @@
+<!-- ---------------------Navbar-------------------------------------- -->
+<%= render "shared/navbar" %>
+<!-- ------------------Image------------------------------------------------ -->
+<div class="show_image" style="background-image: url('<%= @cocktail.image_url %>'); width: 100%; height: 300px;">
+  <div>
+    <h1 class="text-white show-name"><%= @cocktail.name %></h1>
+  </div>
+</div>
+<!-- ---------------------------------------------------------------------- -->
+<!-- Lower part of show page----------------- -->
+
+<div class="container mt-3", style="margin-bottom: 70px;">
+  <div class="row">
+
+    <!-- Left part-------------- -->
+
+        <div class="col">
+        <%= render 'doses/new' %>
+        <%= render 'reviews/new' %>
+        </div>
+
+    <!-- Right Part-------------- -->
+
+      <div class="col-6 text-muted">
+       <h3>Recipe</h3>
+          <table class="table table-bordered mt-4">
+            <tbody>
+              <thead class="text-muted">
+                <th>Ingredient</th>
+                <th>Description</th>
+                <th>Action</th>
+              </thead>
+                <% @cocktail.doses.each do |dose| %>
+                <tr>
+                  <td style= "color: #ffa987";><%= dose.ingredient.name %></td>
+                  <td><i><%= dose.description %></i></td>
+                  <td>
+                    <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="fa fa-trash text-danger"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+      <!--  -->
+  </div>
+  <div class=" col-sm-12 text-muted mt-3">
+      <h3>Reviews</h3>
+      <% if @cocktail.reviews.empty? %>
+        <p>Be the first to let a review</p>
+      <% else %>
+        <ul class="list-group">
+          <% @cocktail.reviews.each do |review| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="badge badge-success badge-pill">
+                <% counter = 0 %>
+                <% 5.times do %>
+                  <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                  <% counter += 1 %>
+                <% end %>
+              </span>
+              <i class="ml-4"><b>"</b><%= review.content %><b>"</b></i>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+</div>
+
+
+
+

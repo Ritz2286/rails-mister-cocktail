@@ -1,0 +1,8 @@
+<div class="col-sm-11 text-muted mt-2" data-aos="flip-right" data-aos-delay="80">
+<h3>Add a review</h3>
+<%= simple_form_for [@cocktail, @review] do |f| %>
+  <%= f.input :rating, collection: 0..5 %>
+  <%= f.input :content %>
+  <%= f.button :submit, 'Leave a Review',class: "btn", style: "border-radius:10px; background-color: #ffa987";%>
+<% end %>
+</div>

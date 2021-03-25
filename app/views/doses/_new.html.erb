@@ -1,0 +1,11 @@
+<div class="text-muted" data-aos="flip-right" data-aos-delay="80">
+  <div class="col-sm-11">
+    <h3>Add a new dose</h3>
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.association :ingredient, input_html: { class: 'select2'  }, include_hidden: false %>
+      <%= f.input :description %>
+      <%= f.button :submit, class: "btn" , style: "background-color: #ffa987; border-radius:10px;" %>
+      <%= link_to 'Back', cocktails_path, class: "btn btn-primary", style: "border-radius:10px;" %>
+    <% end %>
+  </div>
+</div>

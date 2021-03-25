@@ -1,0 +1,28 @@
+
+<%= render "shared/navbar" %>
+<!-- ----------------------------------------------------------------------- -->
+
+<div class="container main mt-2", data-aos="zoom-out">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-4">
+        <div class="card m-2 cocktail_container" style="background-image: url('<%= cocktail.image_url %>'); width: 360px; height: 470px;">
+          <!-- < %= link_to "", cocktail_path(cocktail), class: 'card-link' %> -->
+            <div class="card-description cocktails_name">
+              <h4><%= link_to cocktail.name, cocktail_path(cocktail), class: "card-link text-white" %></h4>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @cocktails.count %> cocktail out of our <%= Cocktail.count %> on our website.</p>
+      <!-- < % else %> -->
+        <!-- <p>All <%= Cocktail.count %> cocktails.</p> -->
+      <% end %>
+    </div>
+  </div>
+</div>
